@@ -15,14 +15,8 @@ jobs:
           git config --local user.name shubhamhirau18
           git config --local user.email shubhamhirau@gmail.com
           git config git-ftp.user depuser
-          #git config git-ftp.deployedsha1file .git-ftp.log
-          git config git-ftp.password Galaxy@123##
-          git config git-ftp.url sftp://172.31.6.77:22/home/depuser/demorepo/
-          git config git-ftp.syncroot .
-          git config git-ftp.insecure 1
-          git config --local http.proxy http://ShubhamHirau:Dw7kwA4i6NX0iavqdYrZ@13.233.198.240:8080
       - name: Deploying to Remote Server
-        run: git ftp push --silent --commit db144a2ffcbff46dc01a0c05eec1bac5c7cc1d48
+        run: git ftp push --user $USER --passwd $PASS --syncroot . sftp://172.31.6.77:22/home/depuser/demorepo/ --insecure -f 
       - run: echo "This Job's Status is ${{ job.status }}."
       #- run: git ftp catchup
       #- run: echo "Git Next Commit Updated to Server."
