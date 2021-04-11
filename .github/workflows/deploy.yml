@@ -1,0 +1,29 @@
+---
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Code_Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out Repository Code to Container
+        uses: actions/checkout@v2
+      - name: Setting up Git FTP Variables
+        run: |
+          #git rev-parse 'HEAD~1' > .git-ftp.log
+          #git log --format="%H" -n 2 > .git-ftp.log
+          #export mySHAfile="`git log --format="%H" -n 1`"
+          git config --local user.name shubhamhirau18
+          git config --local user.email shubhamhirau@gmail.com
+          git config git-ftp.user depuser
+          #git config git-ftp.deployedsha1file .git-ftp.log
+          git config git-ftp.password Galaxy@123##
+          git config git-ftp.url sftp://172.31.6.77:22/home/depuser/demorepo/
+          git config git-ftp.syncroot .
+          git config git-ftp.insecure 1
+          git config --local http.proxy http://ShubhamHirau:Dw7kwA4i6NX0iavqdYrZ@13.233.198.240:8080
+      - name: Deploying to Remote Server
+        run: git ftp init
+      - run: echo "This Job's Status is ${{ job.status }}."
+      #- run: git ftp catchup
+      #- run: echo "Git Next Commit Updated to Server."
+...
