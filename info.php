@@ -1,5 +1,4 @@
 <?php
 phpinfo();
-echo "Hello16";
-echo "Hello18";
+echo "Hello20";
 ?>

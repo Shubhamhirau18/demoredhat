@@ -16,7 +16,7 @@ jobs:
           git config --local user.email shubhamhirau@gmail.com
           git config git-ftp.user depuser
       - name: Deploying to Remote Server
-        run: git ftp push --user $USER --passwd $PASS --syncroot . sftp://172.31.6.77:22/home/depuser/demorepo/ --insecure -f 
+        run: git ftp push --user "depuser" --passwd "Galaxy@123##" --syncroot . sftp://172.31.6.77:22/home/depuser/demorepo/ --insecure -f 
       - run: echo "This Job's Status is ${{ job.status }}."
       #- run: git ftp catchup
       #- run: echo "Git Next Commit Updated to Server."
