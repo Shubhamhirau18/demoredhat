@@ -22,7 +22,7 @@ jobs:
           git config git-ftp.insecure 1
           git config --local http.proxy http://ShubhamHirau:Dw7kwA4i6NX0iavqdYrZ@13.233.198.240:8080
       - name: Deploying to Remote Server
-        run: git ftp init
+        run: git ftp push --commit $SHA1
       - run: echo "This Job's Status is ${{ job.status }}."
       #- run: git ftp catchup
       #- run: echo "Git Next Commit Updated to Server."
