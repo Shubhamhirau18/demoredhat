@@ -9,16 +9,16 @@ services:
     ports:
       - "127.0.0.1:3001:3001"
   nginx:
-    image: nginx:latest
+    image: nginx:1.21.3-alpine
     container_name: nginx-reverse
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/my-site.com.crt:/etc/nginx/my-site.com.crt
-      - ./nginx/my-site.com.key:/etc/nginx/my-site.com.key
+      - ./nginx/uptime-cert.crt:/etc/nginx/uptime-cert.crt
+      - ./nginx/uptime-key.key:/etc/nginx/uptime-key.key
     depends_on:
       - uptime-kuma
     ports:
-      - "192.168.29.44:443:443"
+      - "443:443"
 networks:
   default:
     driver: bridge
